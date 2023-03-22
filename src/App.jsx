@@ -7,14 +7,11 @@ import HomePage from "./components/HomePage";
 function App() {
   // const { data } = useSelector((state) => state.allUsers);
   const [isLogin, setIsLogin] = useState(true);
-
   return (
-
     <div className="App">
       <Menu />
       {!isLogin && <LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
       {isLogin && <HomePage />}
-
 
       {/* {isLogin && data.length > 0 && (
         <div>
@@ -42,7 +39,6 @@ function App() {
           })}
         </div> 
         )}*/}
-
     </div>
   );
 }
