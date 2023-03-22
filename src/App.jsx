@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-
 import Users from "./components/Users";
 import RandomUsers from "./components/RandomUsers";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +7,7 @@ import { fetchUsers } from "./js/userSlice";
 import { fetchUsersRandom } from "./js/randomUserSlice";
 import LoginPage from "./components/LoginPage";
 import Menu from "./components/Menu";
+import CreateNewUserForm from "./components/CreateNewUserForm";
 
 function App() {
   const { data } = useSelector((state) => state.allUsers);
@@ -22,7 +20,7 @@ function App() {
   console.log(random.idrandom);
   return (
     <div className="App">
-       <Menu />
+      <Menu />
       {!isLogin && <LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
       {isLogin && random && (
         <>
@@ -72,6 +70,7 @@ function App() {
           })}
         </div>
       )}
+      <CreateNewUserForm />
     </div>
   );
 }
