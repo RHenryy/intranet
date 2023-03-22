@@ -21,12 +21,17 @@ function App() {
   }, []);
   console.log(random.idrandom);
   return (
-    <div className="App">
-       <Menu />
+    <div className="">
+      <Menu />
       {!isLogin && <LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
       {isLogin && random && (
-        <>
-          <h2>Random User</h2>
+        <div>
+          <h2>Bienvenue sur l'intranet</h2>
+          <h3>
+            La plate-forme de l'entreprise qui vous permet de retrouver tous vos
+            collaborateurs.
+          </h3>
+          <h2>Avez-vous dit bonjour à :</h2>
           <RandomUsers
             key={random.index}
             id={random.id}
@@ -41,35 +46,38 @@ function App() {
             category={random.category}
             birthday={random.birthday}
           />
+
           <button onClick={() => dispatch(fetchUsersRandom())}>
-            Change Random user
+            Dites bonjour à un autre collègue
           </button>
-        </>
+        </div>
       )}
 
       {isLogin && data.length > 0 && (
         <div>
           <h2>Liste des utilisateurs</h2>
-          {data.map((item, index) => {
-            return (
-              <>
-                <Users
-                  key={item.index}
-                  id={item.id}
-                  lastname={item.lastname}
-                  firstname={item.firstname}
-                  photo={item.photo}
-                  birthdate={item.age}
-                  email={item.email}
-                  city={item.city}
-                  country={item.country}
-                  phone={item.phone}
-                  category={item.category}
-                  birthday={item.birthday}
-                />
-              </>
-            );
-          })}
+          <div className="wrapper">
+            {data.map((item, index) => {
+              return (
+                <div className="card-bg">
+                  <Users
+                    key={item.index}
+                    id={item.id}
+                    lastname={item.lastname}
+                    firstname={item.firstname}
+                    photo={item.photo}
+                    birthdate={item.age}
+                    email={item.email}
+                    city={item.city}
+                    country={item.country}
+                    phone={item.phone}
+                    category={item.category}
+                    birthday={item.birthday}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
