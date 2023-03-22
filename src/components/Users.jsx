@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "../App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "./js/userSlice";
+import { fetchUsers } from "../js/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCakeCandles,
@@ -16,7 +16,7 @@ function Users(props) {
     setDisplay(!display);
   };
   return (
-    <div className="App">
+    <div className="User">
       {props.category === "Marketing" && (
         <p className="bg-solid-blue">{props.category}</p>
       )}
