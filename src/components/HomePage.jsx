@@ -21,7 +21,7 @@ export default function HomePage() {
       </p>
 
       <div className="randomUser">
-        <p>Avez-vous dis bonjour à :</p>
+        <p>Avez-vous dit bonjour à :</p>
         <RandomUsers
           key={random.index}
           id={random.id}
