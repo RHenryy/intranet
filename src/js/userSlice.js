@@ -20,9 +20,6 @@ export const fetchUsersApi = createSlice({
             let id = state.data[action.payload].id;
             action.payload = action.payload + 1;
             const index = (id) => id === action.payload;
-            // console.log(id, action.payload);
-            // let index =  state.sum.findIndex(state.data[action.payload].username.length + state.data[action.payload].name.length);
-            // console.log(state.sum.findIndex(index));
             // if(index!== -1)
             // {
             //     state.sum[action.payload+1] = null;
@@ -38,6 +35,7 @@ export const fetchUsersApi = createSlice({
         }
     },
     extraReducers: (builder) => {
+
         builder.addCase(fetchUsers.pending, (state, action) => {
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
@@ -64,6 +62,7 @@ export const fetchUsersApi = createSlice({
 
         });
         builder.addCase(fetchUsers.rejected, (state, action) => {
+
 
         })
     },
