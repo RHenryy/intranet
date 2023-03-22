@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./js/userSlice";
 import { fetchUsersRandom } from "./js/randomUserSlice";
 import LoginPage from "./components/LoginPage";
+import Menu from "./components/Menu";
 
 function App() {
   const { data } = useSelector((state) => state.allUsers);
@@ -21,6 +22,7 @@ function App() {
   console.log(random.idrandom);
   return (
     <div className="App">
+       <Menu />
       {!isLogin && <LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
       {isLogin && random && (
         <>
