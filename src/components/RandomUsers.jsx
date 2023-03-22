@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "../App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "./js/userSlice";
+import { fetchUsers } from "../js/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCakeCandles,
@@ -9,7 +9,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Randomusers(props) {
+function RandomUsers(props) {
   const dispatch = useDispatch();
   const [display, setDisplay] = useState(false);
   const handleChange = (e) => {
@@ -48,4 +48,4 @@ function Randomusers(props) {
   );
 }
 
-export default Randomusers;
+export default RandomUsers;

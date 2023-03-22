@@ -20,10 +20,8 @@ export const randomUser = createSlice({
       builder.addCase(fetchUsersRandom.pending, (state, action) => {
       });
       builder.addCase(fetchUsersRandom.fulfilled, (state, action) => {
-        const random = Math.floor(Math.random() * action.payload.length) + 1;
-        console.log(random);
+        const random = Math.floor(Math.random() * action.payload.length);
         state.random = action.payload[random];
-        console.log(state.random);
         // state.random.forEach((user) => {
         //     user.birthdate = new Date(user.birthdate).toLocaleDateString();
         //     state.randomAge.push(new Date().toLocaleDateString() - user.birthdate);
