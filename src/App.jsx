@@ -1,53 +1,27 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Users from "./components/Users";
-import RandomUsers from "./components/RandomUsers";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "./js/userSlice";
-import { fetchUsersRandom } from "./js/randomUserSlice";
 import LoginPage from "./components/LoginPage";
 import Menu from "./components/Menu";
+import HomePage from "./components/HomePage";
 import CreateNewUserForm from "./components/CreateNewUserForm";
 
+
 function App() {
-  const { data } = useSelector((state) => state.allUsers);
-  const { random } = useSelector((state) => state.randomUser);
+  // const { data } = useSelector((state) => state.allUsers);
   const [isLogin, setIsLogin] = useState(true);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUsers()), dispatch(fetchUsersRandom());
-  }, []);
-  console.log(random.idrandom);
+
   return (
+
     <div className="App">
       <Menu />
       {!isLogin && <LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
-      {isLogin && random && (
-        <>
-          <h2>Random User</h2>
-          <RandomUsers
-            key={random.index}
-            id={random.id}
-            lastname={random.lastname}
-            firstname={random.firstname}
-            photo={random.photo}
-            birthdate={random.age}
-            email={random.email}
-            city={random.city}
-            country={random.country}
-            phone={random.phone}
-            category={random.category}
-            birthday={random.birthday}
-          />
-          <button onClick={() => dispatch(fetchUsersRandom())}>
-            Change Random user
-          </button>
-        </>
-      )}
+      {isLogin && <HomePage />}
 
-      {isLogin && data.length > 0 && (
+
+      {/* {isLogin && data.length > 0 && (
         <div>
           <h2>Liste des utilisateurs</h2>
+
           {data.map((item, index) => {
             return (
               <>
@@ -68,9 +42,9 @@ function App() {
               </>
             );
           })}
-        </div>
-      )}
       <CreateNewUserForm />
+        </div> 
+        )}*/}
     </div>
   );
 }

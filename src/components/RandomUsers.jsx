@@ -16,34 +16,44 @@ function RandomUsers(props) {
     setDisplay(!display);
   };
   return (
-    <div className="App">
-      {props.category === "Marketing" && (
-        <p className="bg-solid-blue">{props.category}</p>
-      )}
-      {props.category === "Client" && (
-        <p className="bg-solid-green">{props.category}</p>
-      )}
-      {props.category === "Technique" && (
-        <p className="bg-solid-pink">{props.category}</p>
-      )}
-
-      <p>
-        {props.firstname} {props.lastname} ({props.birthdate} ans)
-      </p>
-      <img src={props.photo} alt={props.lastname} />
-      <p id={props.id} style={display ? {} : { display: "none" }}></p>
-      <p>
-        {props.city}, {props.country}
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faEnvelope} /> {props.email}
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faPhone} /> {props.phone}
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faCakeCandles} /> Anniversaire : {props.birthday}
-      </p>
+    <div className="card-container-random">
+      <div className="category">
+        {props.category === "Marketing" && (
+          <p className="bg-solid-pink category">{props.category}</p>
+        )}
+        {props.category === "Client" && (
+          <p className="bg-solid-green category">{props.category}</p>
+        )}
+        {props.category === "Technique" && (
+          <p className="bg-solid-blue category">{props.category}</p>
+        )}
+      </div>
+      <div className="custom-card">
+        <div className="card-image">
+          <img src={props.photo} alt={props.lastname} />
+        </div>
+        <div className="card-text">
+          <p className="name">
+            <span className="bold">
+              {props.firstname} {props.lastname}
+            </span>{" "}
+            ({props.birthdate} ans)
+          </p>
+          <p className="smaller">
+            {props.city}, {props.country}
+          </p>
+          <p className="smaller">
+            <FontAwesomeIcon icon={faEnvelope} /> {props.email}
+          </p>
+          <p className="smaller">
+            <FontAwesomeIcon icon={faPhone} /> {props.phone}
+          </p>
+          <p className="smaller">
+            <FontAwesomeIcon icon={faCakeCandles} /> Anniversaire :{" "}
+            {props.birthday}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
