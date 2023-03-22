@@ -3,6 +3,8 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import Menu from "./components/Menu";
 import HomePage from "./components/HomePage";
+import CreateNewUserForm from "./components/CreateNewUserForm";
+
 
 function App() {
   // const { data } = useSelector((state) => state.allUsers);
@@ -40,9 +42,9 @@ function App() {
               </>
             );
           })}
+      <CreateNewUserForm />
         </div> 
         )}*/}
-
     </div>
   );
 }
