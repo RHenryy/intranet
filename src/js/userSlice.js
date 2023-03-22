@@ -20,9 +20,7 @@ export const fetchUsersApi = createSlice({
             let id = state.data[action.payload].id;
             action.payload = action.payload+1;
             const index = (id) => id === action.payload;
-            console.log(id, action.payload);
             // let index =  state.sum.findIndex(state.data[action.payload].username.length + state.data[action.payload].name.length);
-            console.log(state.sum.findIndex(index));
             // if(index!== -1)
             // {
             //     state.sum[action.payload+1] = null;
@@ -42,8 +40,6 @@ export const fetchUsersApi = createSlice({
       });
       builder.addCase(fetchUsers.fulfilled, (state, action) => {
         state.data = action.payload;
-        console.log(state.data);
-        console.log(new Date().getTime())
         for(let i = 0; i < state.data.length; i++)
         {   
             let birthdate = new Date(state.data[i].birthdate).getTime();
@@ -60,9 +56,6 @@ export const fetchUsersApi = createSlice({
         //     state.age.push(new Date().toLocaleDateString() - user.birthdate);
         //     state.data.hello = "salut";
         // });
-        console.log(state.data);
-  
-
       });
       builder.addCase(fetchUsers.rejected, (state, action) => {
 
