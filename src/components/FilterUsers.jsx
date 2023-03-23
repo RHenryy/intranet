@@ -8,7 +8,7 @@ import {
 
 export default function FilterUsers(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState();
   const [filter, setFilter] = useState("name");
   const dispatch = useDispatch();
 

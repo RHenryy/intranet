@@ -14,6 +14,7 @@ export function AppRoutes() {
 
   useEffect(() => {
     setIsLogin(localStorage.getItem("login"));
+    setIsAdmin(localStorage.getItem("admin"));
   }, []);
 
   return (

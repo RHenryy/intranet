@@ -9,8 +9,9 @@ export default function Logout() {
   const { setIsLogin } = useContext(LoginContext);
 
   useEffect(() => {
-    localStorage.setItem("login", false);
+    localStorage.clear();
     setIsLogin(false);
+    setIsAdmin(false);
     navigate("/");
   });
   return <div>...Logout</div>;

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import bcryptjs from "bcryptjs";
 import { fetchUsers } from "../js/userSlice";
 import { LoginContext } from "../context/LoginContext";
+import { AdminContext } from "../context/AdminContext";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.allUsers);
   const { setIsLogin } = useContext(LoginContext);
+  const { setIsAdmin } = useContext(AdminContext);
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -22,6 +24,10 @@ export default function LoginPage() {
     event.preventDefault();
     // test des infos de connexions
     data.forEach((item) => {
+      if (item.isAdmin === true) {
+        localStorage.setItem("admin", true);
+        setIsAdmin(true);
+      }
       if (
         bcryptjs.compareSync(infosConnexion.password, item.password) &&
         item.email == infosConnexion.email
