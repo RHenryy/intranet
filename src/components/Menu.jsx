@@ -14,13 +14,12 @@ function Menu() {
       <Logo>Intranet</Logo>
       {isLogin && <Link to="/listUsers">Liste</Link>}
       {isAdmin && <Link to="/addUser">Nouvelle Utilisateur</Link>}
-      {!isLogin && (
+      {isLogin && (
         <LoginButton>
           <FontAwesomeIcon icon={faRightToBracket} />
-          Connexion
+          {isLogin && <Link to="">Déconnexion</Link>}
         </LoginButton>
       )}
-      {isLogin && <Link to="">Déconnexion</Link>}
     </Nav>
   );
 }
