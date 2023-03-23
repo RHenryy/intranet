@@ -8,7 +8,7 @@ export default function HomePage() {
   const { random } = useSelector((state) => state.randomUser);
 
   useEffect(() => {
-    dispatch(fetchUsersRandom());
+    dispatch(fetchUsersRandom);
   }, []);
 
   return (

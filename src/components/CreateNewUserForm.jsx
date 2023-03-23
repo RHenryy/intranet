@@ -13,18 +13,39 @@ const CreateNewUserForm = () => {
   const [ville, setVille] = useState("");
   const [pays, setPays] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const checkEmptyFields = () => {
+    const emptyFields = {};
+    if (!nom) emptyFields.nom = "Veuillez saisir votre nom";
+    if (!prenom) emptyFields.prenom = "Veuillez saisir votre prénom";
+    if (!email) emptyFields.email = "Veuillez saisir votre email";
+    if (!password) emptyFields.password = "Veuillez saisir votre mot de passe";
+    if (!phone) emptyFields.phone = "Veuillez saisir votre téléphone";
+    if (!dateOfBirth)
+      emptyFields.dateOfBirth = "Veuillez saisir votre date de naissance";
+    if (!ville) emptyFields.ville = "Veuillez saisir votre ville";
+    if (!pays) emptyFields.pays = "Veuillez saisir votre pays";
+    if (!photoUrl) emptyFields.photoUrl = "Veuillez ajouter une URL";
+    return emptyFields;
+  };
 
   const genderOptions = ["Homme", "Femme"];
   const categoryOptions = ["Marketing", "Technique", "Client"];
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const emptyFields = checkEmptyFields();
+    setErrors(emptyFields);
+    if (Object.keys(emptyFields).length === 0) {
+      // Soumettre le formulaire
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Créer un utilisateur</h2>
-      <div>
+      <Title>Créer un utilisateur</Title>
+      <FormGroup>
         <Label>Civilité :</Label>
         <Select
           value={civilite}
@@ -37,9 +58,9 @@ const CreateNewUserForm = () => {
             </option>
           ))}
         </Select>
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Catégorie :</Label>
         <Select
           value={category}
@@ -51,9 +72,9 @@ const CreateNewUserForm = () => {
             </option>
           ))}
         </Select>
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Nom :</Label>
         <Input
           type="text"
@@ -61,9 +82,9 @@ const CreateNewUserForm = () => {
           placeholder="Wick"
           onChange={(event) => setNom(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Prénom :</Label>
         <Input
           type="text"
@@ -71,9 +92,9 @@ const CreateNewUserForm = () => {
           placeholder="John"
           onChange={(event) => setPrenom(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Email :</Label>
         <Input
           type="text"
@@ -81,9 +102,9 @@ const CreateNewUserForm = () => {
           placeholder="John.wick@outlook.com"
           onChange={(event) => setEmail(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Mot de passe :</Label>
         <Input
           type="text"
@@ -91,9 +112,9 @@ const CreateNewUserForm = () => {
           placeholder="(min. 8 caractères)"
           onChange={(event) => setPassword(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Téléphone :</Label>
         <Input
           type="text"
@@ -101,18 +122,18 @@ const CreateNewUserForm = () => {
           placeholder="07 89 01 23 45"
           onChange={(event) => setPhone(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Date d'anniversaire :</Label>
         <Input
           type="date"
           value={dateOfBirth}
           onChange={(event) => setDateOfBirth(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Ville :</Label>
         <Input
           type="text"
@@ -120,9 +141,9 @@ const CreateNewUserForm = () => {
           placeholder="Los angeles"
           onChange={(event) => setVille(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Pays :</Label>
         <Input
           type="text"
@@ -130,9 +151,9 @@ const CreateNewUserForm = () => {
           placeholder="Etats-Unis"
           onChange={(event) => setPays(event.target.value)}
         />
-      </div>
+      </FormGroup>
       <br />
-      <div>
+      <FormGroup>
         <Label>Photo URL :</Label>
         <Input
           type="text"
@@ -140,42 +161,55 @@ const CreateNewUserForm = () => {
           placeholder="Https://"
           onChange={(event) => setPhotoUrl(event.target.value)}
         />
-      </div>
+      </FormGroup>
+      {Object.keys(errors).length > 0 && (
+        <ErrorMessage>
+          {Object.values(errors).map((error) => (
+            <p>{error}</p>
+          ))}
+        </ErrorMessage>
+      )}
       <Button type="submit">Ajouter</Button>
     </form>
   );
 };
 export default CreateNewUserForm;
 
-// const FormWrapper = styled.div`
-//   max-width: 500px;
-//   margin: 0 auto;
-// `;
+const Title = styled.h2`
+  font-size: 50px;
+`;
 
-// const FormGroup = styled.div`
-//   margin-bottom: 1rem;
-// `;
+const FormGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const Label = styled.label`
-  display: flex;
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: right;
+  flex: 1;
 `;
 
 const Input = styled.input`
-  padding: 0.5rem;
+  padding: 8px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  width: 100%;
+  width: auto;
+  flex: 2;
 `;
 
 const Select = styled.select`
-  padding: 0.5rem;
+  padding: 8px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  width: 100%;
+  width: auto;
+  flex: 2;
 `;
 
 const Button = styled.button`
-  padding: 0.5rem;
+  padding: 10px 15px;
   margin: 8px;
   border-radius: 3px;
   border: none;
@@ -186,4 +220,8 @@ const Button = styled.button`
   &:hover {
     background-color: #f95e5e;
   }
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
 `;

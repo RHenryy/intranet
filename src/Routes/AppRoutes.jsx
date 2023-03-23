@@ -1,18 +1,32 @@
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
+import CreateNewUserForm from "../components/CreateNewUserForm";
+import Logout from "../components/Logout";
+import Menu from "../components/Menu";
 import UsersList from "../components/UsersList";
+import { AdminContext } from "../context/AdminContext";
+import { LoginContext } from "../context/LoginContext";
 
 export function AppRoutes() {
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsLogin(localStorage.getItem("login"));
+  }, []);
+
   return (
-    <Routes>
-      {/* <Route path="/addUser" element={<AddUser />} />
-      <Route path="/updateUser" element={<UpdateUser />} /> */}
-      <Route path="/listUsers" element={<UsersList />} />
-      <Route path="/" element={<App />} />
-      {/* <Route
-        path="/"
-        render={() => (isLogin ? <Redirect to="/homepage" /> : null)}
-      /> */}
-    </Routes>
+    <LoginContext.Provider value={{ isLogin, setIsLogin }}>
+      <AdminContext.Provider value={{ isAdmin, setIsAdmin }}>
+        <Menu />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="listUsers" element={<UsersList />} />
+          <Route path="addUser" element={<CreateNewUserForm />} />
+          <Route path="logout" element={<Logout />} />
+        </Routes>
+      </AdminContext.Provider>
+    </LoginContext.Provider>
   );
 }

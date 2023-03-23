@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { AdminContext } from "../context/AdminContext";
+import { LoginContext } from "../context/LoginContext";
 
 function Menu() {
+  const { isAdmin, setIsAdmin } = useContext(AdminContext);
+
+  const { isLogin } = useContext(LoginContext);
+  console.log(isLogin);
+
   return (
     <Nav>
       <Logo>Intranet</Logo>
-      <Link to="/listUsers">Liste</Link>
-      <LoginButton>
-        <FontAwesomeIcon icon={faRightToBracket} />
-        Connexion
-      </LoginButton>
+      {isLogin && <Link to="/listUsers">Liste</Link>}
+      {isAdmin && <Link to="/addUser">Nouvelle Utilisateur</Link>}
+      {isLogin && (
+        <LoginButton>
+          <FontAwesomeIcon icon={faRightToBracket} />
+          {isLogin && <Link to="/logout">Déconnexion</Link>}
+        </LoginButton>
+      )}
     </Nav>
   );
 }
