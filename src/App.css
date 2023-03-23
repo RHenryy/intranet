@@ -142,3 +142,11 @@ img {
   margin: 0.5rem;
   width: 15%;
 }
+.button-change {
+  padding:0.3rem;
+  margin: 0.5rem;
+}
+.button-change:hover {
+  background-color: crimson;
+  color: white;
+}
