@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,12 +6,13 @@ import {
   faEnvelope,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { AdminContext } from "../context/AdminContext";
+import { deleteUsers } from "../js/userSlice";
+import { useDispatch } from "react-redux";
 
 function Users(props) {
-  const [display, setDisplay] = useState(false);
-  const handleChange = (e) => {
-    setDisplay(!display);
-  };
+  const { isAdmin } = useContext(AdminContext);
+  const dispatch = useDispatch();
   return (
     <div key={props.id} className="card-container">
       <div className="category">
@@ -49,6 +50,17 @@ function Users(props) {
             <FontAwesomeIcon icon={faCakeCandles} /> Anniversaire :{" "}
             {props.birthday}
           </p>
+          {isAdmin && (
+            <div>
+              <button
+                className="button-change"
+                onClick={() => dispatch(deleteUsers(props.id))}
+              >
+                Delete User
+              </button>
+              <button className="button-change">Edit User</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

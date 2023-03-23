@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../js/userSlice";
 import Users from "./Users";
 import FilterUsers from "./FilterUsers";
 import React from "react";
+import { AdminContext } from "../context/AdminContext";
 
 export default function UsersList() {
+  const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const dispatch = useDispatch();
   const { data, filteredData } = useSelector((state) => state.allUsers);
 
@@ -21,7 +23,6 @@ export default function UsersList() {
         {filteredData.length > 0 &&
           filteredData.map((item, index) => {
             return (
-
               <React.Fragment key={item.id}>
                 <Users
                   id={item.id}
