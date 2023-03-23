@@ -1,47 +1,71 @@
 {
-  "hash": "2596abc0",
-  "browserHash": "956e4b16",
+  "hash": "9f88273c",
+  "browserHash": "557e49b9",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "bd5af396",
+      "fileHash": "bd18a33f",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "de58d172",
+      "fileHash": "0b36abca",
       "needsInterop": true
     },
     "react-redux": {
       "src": "../../node_modules/react-redux/es/index.js",
       "file": "react-redux.js",
-      "fileHash": "cce0b7dc",
+      "fileHash": "cbcbab9c",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "5ddb1bed",
       "needsInterop": false
     },
     "@reduxjs/toolkit": {
       "src": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js",
       "file": "@reduxjs_toolkit.js",
-      "fileHash": "de51f5cd",
+      "fileHash": "ff999d42",
+      "needsInterop": false
+    },
+    "styled-components": {
+      "src": "../../node_modules/styled-components/dist/styled-components.browser.esm.js",
+      "file": "styled-components.js",
+      "fileHash": "e911d3ce",
+      "needsInterop": false
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/index.js",
+      "file": "react-router.js",
+      "fileHash": "cfbaf815",
       "needsInterop": false
     },
     "@fortawesome/react-fontawesome": {
       "src": "../../node_modules/@fortawesome/react-fontawesome/index.es.js",
       "file": "@fortawesome_react-fontawesome.js",
-      "fileHash": "b4c06998",
+      "fileHash": "f24b1a7f",
       "needsInterop": false
     },
     "@fortawesome/free-solid-svg-icons": {
       "src": "../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs",
       "file": "@fortawesome_free-solid-svg-icons.js",
-      "fileHash": "24b05e47",
+      "fileHash": "536d4ffe",
       "needsInterop": false
     }
   },
   "chunks": {
     "chunk-RVSLBP3T": {
       "file": "chunk-RVSLBP3T.js"
+    },
+    "chunk-FCELEQHK": {
+      "file": "chunk-FCELEQHK.js"
+    },
+    "chunk-2LF4LWTW": {
+      "file": "chunk-2LF4LWTW.js"
     },
     "chunk-ST3U5LCA": {
       "file": "chunk-ST3U5LCA.js"
