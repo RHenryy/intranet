@@ -1,8 +1,12 @@
+import { hashSync } from "bcrypt";
 import { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import { LoginContext } from "../context/LoginContext";
+// import bcrypt from "bcrypt";
 
 export default function LoginPage() {
   const { islogin, setIsLogin } = useContext(LoginContext);
+  const { data } = useSelector((state) => state.allUsers);
   const [infosConnexion, setInfosConnexion] = useState({
     email: "",
     password: "",
@@ -11,10 +15,18 @@ export default function LoginPage() {
   function handleSubmit(event) {
     event.preventDefault();
     // test des infos de connexions
-    // if true
-    setIsLogin(true);
-    // if false
-    throw new Error("falsy information");
+    // const password = hashSync(infosConnexion.password);
+    // console.log(password);
+    data.forEach((item) => {
+      if (
+        item.password == infosConnexion.password &&
+        item.email == infosConnexion.email
+      ) {
+        setIsLogin(true);
+      } else {
+        throw new Error("falsy information");
+      }
+    });
   }
 
   function handleChange(event) {
