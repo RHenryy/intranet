@@ -127,3 +127,18 @@ img {
 .name {
   margin-top: 0.3rem;
 }
+
+.filterForm {
+  margin-bottom: 1rem;
+
+}
+.filterForm input {
+  padding: 0.3rem;
+  margin: 0.5rem;
+  width: 40%;
+}
+.filterForm select {
+  padding: 0.3rem;
+  margin: 0.5rem;
+  width: 15%;
+}
