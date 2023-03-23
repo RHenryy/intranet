@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
+import CreateNewUserForm from "../components/CreateNewUserForm";
+import Logout from "../components/Logout";
 import Menu from "../components/Menu";
 import UsersList from "../components/UsersList";
 import { AdminContext } from "../context/AdminContext";
@@ -17,6 +19,7 @@ export function AppRoutes() {
           <Route path="/" element={<App />} />
           <Route path="listUsers" element={<UsersList />} />
           <Route path="addUser" element={<CreateNewUserForm />} />
+          <Route path="logout" element={<Logout />} />
         </Routes>
       </AdminContext.Provider>
     </LoginContext.Provider>
