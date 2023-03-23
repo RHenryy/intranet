@@ -8,7 +8,6 @@ import CreateNewUserForm from "./components/CreateNewUserForm";
 function App() {
   // const { data } = useSelector((state) => state.allUsers);
   const [isLogin, setIsLogin] = useState(true);
-
   return (
     <div className="App">
       <Menu />
