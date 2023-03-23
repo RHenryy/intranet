@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginContext } from "../context/LoginContext";
 
-export default function LoginPage({ isLogin, setIsLogin }) {
+export default function LoginPage() {
+  const { islogin, setIsLogin } = useContext(LoginContext);
   const [infosConnexion, setInfosConnexion] = useState({
     email: "",
     password: "",
@@ -8,10 +10,14 @@ export default function LoginPage({ isLogin, setIsLogin }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    // test des infos de connexions
+    // if true
+    setIsLogin(true);
+    // if false
+    throw new Error("falsy information");
   }
 
   function handleChange(event) {
-    console.log(infosConnexion);
     setInfosConnexion((prevState) => {
       return {
         ...prevState,

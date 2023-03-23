@@ -19,22 +19,20 @@ export default function UsersList() {
         {data.length > 0 &&
           data.map((item, index) => {
             return (
-              <>
-                <Users
-                  key={item.index}
-                  id={item.id}
-                  lastname={item.lastname}
-                  firstname={item.firstname}
-                  photo={item.photo}
-                  birthdate={item.age}
-                  email={item.email}
-                  city={item.city}
-                  country={item.country}
-                  phone={item.phone}
-                  category={item.category}
-                  birthday={item.birthday}
-                />
-              </>
+              <Users
+                key={item.index}
+                id={item.id}
+                lastname={item.lastname}
+                firstname={item.firstname}
+                photo={item.photo}
+                birthdate={item.age}
+                email={item.email}
+                city={item.city}
+                country={item.country}
+                phone={item.phone}
+                category={item.category}
+                birthday={item.birthday}
+              />
             );
           })}
       </div>
