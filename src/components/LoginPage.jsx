@@ -1,8 +1,6 @@
-import { hashSync } from "bcrypt";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { LoginContext } from "../context/LoginContext";
-// import bcrypt from "bcrypt";
 
 export default function LoginPage() {
   const { islogin, setIsLogin } = useContext(LoginContext);
