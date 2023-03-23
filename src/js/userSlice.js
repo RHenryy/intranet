@@ -41,8 +41,6 @@ export const fetchUsersApi = createSlice({
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             state.data = action.payload;
-            console.log(state.data);
-            console.log(new Date().getTime())
             for (let i = 0; i < state.data.length; i++) {
                 let birthdate = new Date(state.data[i].birthdate).getTime();
                 let dateToday = new Date();

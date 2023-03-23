@@ -3,12 +3,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-import { LoginContext } from "../context/LoginContext";
 import { AdminContext } from "../context/AdminContext";
+import { LoginContext } from "../context/LoginContext";
 
 function Menu() {
-  const { isLogin, setIsLogin } = useContext(LoginContext);
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
+
+  const { isLogin } = useContext(LoginContext);
+  console.log(isLogin);
+
   return (
     <Nav>
       <Logo>Intranet</Logo>
@@ -17,7 +20,7 @@ function Menu() {
       {isLogin && (
         <LoginButton>
           <FontAwesomeIcon icon={faRightToBracket} />
-          {isLogin && <Link to="">Déconnexion</Link>}
+          {isLogin && <Link to="/logout">Déconnexion</Link>}
         </LoginButton>
       )}
     </Nav>

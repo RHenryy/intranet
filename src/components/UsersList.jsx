@@ -8,7 +8,7 @@ export default function UsersList() {
   const { data } = useSelector((state) => state.allUsers);
 
   useEffect(() => {
-    dispatch(fetchUsers);
+    dispatch(fetchUsers());
   }, []);
 
   return (

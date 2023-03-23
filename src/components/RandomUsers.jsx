@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
 import "../App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../js/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCakeCandles,
@@ -10,11 +7,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function RandomUsers(props) {
-  const dispatch = useDispatch();
-  const [display, setDisplay] = useState(false);
-  const handleChange = (e) => {
-    setDisplay(!display);
-  };
   return (
     <div className="card-container-random">
       <div className="category">

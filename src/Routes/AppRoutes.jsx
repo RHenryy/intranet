@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
 import CreateNewUserForm from "../components/CreateNewUserForm";
@@ -11,6 +11,11 @@ import { LoginContext } from "../context/LoginContext";
 export function AppRoutes() {
   const [isLogin, setIsLogin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsLogin(localStorage.getItem("login"));
+  }, []);
+
   return (
     <LoginContext.Provider value={{ isLogin, setIsLogin }}>
       <AdminContext.Provider value={{ isAdmin, setIsAdmin }}>

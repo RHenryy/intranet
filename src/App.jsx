@@ -8,6 +8,7 @@ import { LoginContext } from "./context/LoginContext";
 
 function App() {
   const { isLogin } = useContext(LoginContext);
+
   return (
     <div className="App">
       {!isLogin && <LoginPage />}

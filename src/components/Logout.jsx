@@ -4,13 +4,13 @@ import { AdminContext } from "../context/AdminContext";
 import { LoginContext } from "../context/LoginContext";
 
 export default function Logout() {
-  const { setIsLogin } = useContext(LoginContext);
   const { setIsAdmin } = useContext(AdminContext);
   const navigate = useNavigate();
+  const { setIsLogin } = useContext(LoginContext);
 
   useEffect(() => {
+    localStorage.setItem("login", false);
     setIsLogin(false);
-    setIsAdmin(false);
     navigate("/");
   });
   return <div>...Logout</div>;

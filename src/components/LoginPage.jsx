@@ -1,10 +1,18 @@
-import { useContext, useState } from "react";
-import { useSelector } from "react-redux";
+import { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import bcryptjs from "bcryptjs";
+import { fetchUsers } from "../js/userSlice";
 import { LoginContext } from "../context/LoginContext";
 
 export default function LoginPage() {
-  const { islogin, setIsLogin } = useContext(LoginContext);
+  const dispatch = useDispatch();
   const { data } = useSelector((state) => state.allUsers);
+  const { setIsLogin } = useContext(LoginContext);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
+
   const [infosConnexion, setInfosConnexion] = useState({
     email: "",
     password: "",
@@ -13,16 +21,14 @@ export default function LoginPage() {
   function handleSubmit(event) {
     event.preventDefault();
     // test des infos de connexions
-    // const password = hashSync(infosConnexion.password);
-    // console.log(password);
     data.forEach((item) => {
       if (
-        item.password == infosConnexion.password &&
+        bcryptjs.compareSync(infosConnexion.password, item.password) &&
         item.email == infosConnexion.email
       ) {
+        localStorage.setItem("login", true);
         setIsLogin(true);
-      } else {
-        throw new Error("falsy information");
+        return;
       }
     });
   }
