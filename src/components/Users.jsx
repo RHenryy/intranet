@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../js/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCakeCandles,
@@ -10,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Users(props) {
-  const dispatch = useDispatch();
   const [display, setDisplay] = useState(false);
   const handleChange = (e) => {
     setDisplay(!display);

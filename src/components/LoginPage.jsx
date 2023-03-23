@@ -8,8 +8,6 @@ export default function LoginPage({ isLogin, setIsLogin }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    console.log(event);
   }
 
   function handleChange(event) {
