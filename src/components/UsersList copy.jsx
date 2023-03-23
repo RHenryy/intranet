@@ -7,21 +7,20 @@ import React from "react";
 
 export default function UsersList() {
   const dispatch = useDispatch();
-  const { data, filteredData } = useSelector((state) => state.allUsers);
+  const { data } = useSelector((state) => state.allUsers);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchUsers);
   }, []);
 
   return (
     <div>
       <h2>Liste des utilisateurs</h2>
-      <FilterUsers />
+      <FilterUsers data={data} />
       <div className="wrapper">
-        {filteredData.length > 0 &&
-          filteredData.map((item, index) => {
+        {data.length > 0 &&
+          data.map((item, index) => {
             return (
-
               <React.Fragment key={item.id}>
                 <Users
                   id={item.id}

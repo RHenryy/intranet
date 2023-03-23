@@ -13,7 +13,7 @@ function Users(props) {
     setDisplay(!display);
   };
   return (
-    <div className="card-container">
+    <div key={props.id} className="card-container">
       <div className="category">
         {props.category === "Marketing" && (
           <p className="bg-solid-pink category">{props.category}</p>
