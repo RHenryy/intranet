@@ -10,6 +10,7 @@ export default function LoginPage() {
   const { data } = useSelector((state) => state.allUsers);
   const { setIsLogin } = useContext(LoginContext);
   const { setIsAdmin } = useContext(AdminContext);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -23,20 +24,36 @@ export default function LoginPage() {
   function handleSubmit(event) {
     event.preventDefault();
     // test des infos de connexions
-    data.forEach((item) => {
-      if (item.isAdmin === true) {
+    // data.forEach((item) => {
+    //   if (item.isAdmin === true) {
+    //     localStorage.setItem("admin", true);
+    //     setIsAdmin(true);
+    //   }
+    //   if (
+    //     bcryptjs.compareSync(infosConnexion.password, item.password) &&
+    //     item.email == infosConnexion.email
+    //   ) {
+    //     localStorage.setItem("login", true);
+    //     setIsLogin(true);
+    //     return;
+    //   }
+    // });
+    let checkEmail = data.filter((user) =>
+      user.email.toLowerCase().includes(infosConnexion.email.toLowerCase())
+    );
+    let checkPassword = bcryptjs.compareSync(
+      infosConnexion.password,
+      checkEmail[0].password
+    );
+    if (checkEmail.length > 0 && checkPassword) {
+      localStorage.setItem("login", true);
+      localStorage.setItem("user", JSON.stringify(checkEmail[0]));
+      setIsLogin(true);
+      if (checkEmail[0].isAdmin) {
         localStorage.setItem("admin", true);
         setIsAdmin(true);
       }
-      if (
-        bcryptjs.compareSync(infosConnexion.password, item.password) &&
-        item.email == infosConnexion.email
-      ) {
-        localStorage.setItem("login", true);
-        setIsLogin(true);
-        return;
-      }
-    });
+    } else setError("Email ou mot de passe incorrect");
   }
 
   function handleChange(event) {
@@ -56,6 +73,7 @@ export default function LoginPage() {
         Pour vous connecter à l'intranet, entrez votre identifiant et mot de
         passe.
       </p>
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
