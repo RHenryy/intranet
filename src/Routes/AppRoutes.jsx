@@ -5,6 +5,7 @@ import CreateNewUserForm from "../components/CreateNewUserForm";
 import Logout from "../components/Logout";
 import Menu from "../components/Menu";
 import UsersList from "../components/UsersList";
+import UserProfile from "../components/UserProfile";
 import { AdminContext } from "../context/AdminContext";
 import { LoginContext } from "../context/LoginContext";
 
@@ -23,9 +24,11 @@ export function AppRoutes() {
         <Menu />
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="listUsers" element={<UsersList />} />
-          <Route path="addUser" element={<CreateNewUserForm />} />
-          <Route path="logout" element={<Logout />} />
+          {isLogin && <Route path="listUsers" element={<UsersList />} />}
+          {/* <Route path="listUsers" element={<UsersList />} /> */}
+          {isLogin && <Route path="addUser" element={<CreateNewUserForm />} />}
+          {isLogin && <Route path="profile" element={<UserProfile />} />}
+          {isLogin && <Route path="logout" element={<Logout />} />}
         </Routes>
       </AdminContext.Provider>
     </LoginContext.Provider>

@@ -99,7 +99,7 @@
 .card-container-random {
   display:flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 1rem;
@@ -112,7 +112,7 @@
 .card-image {
   width:30%;
   margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 .card-text {
   width:70%;
@@ -149,4 +149,12 @@ img {
 .button-change:hover {
   background-color: crimson;
   color: white;
+}
+.menu-image {
+  width: 45%;
+  border-radius: 30px;
+
+}
+.card-container-profile {
+  width:100%;
 }
