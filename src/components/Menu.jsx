@@ -8,19 +8,51 @@ import { LoginContext } from "../context/LoginContext";
 
 function Menu() {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
-
   const { isLogin } = useContext(LoginContext);
-  console.log(isLogin);
 
   return (
     <Nav>
-      <Logo>Intranet</Logo>
-      {isLogin && <Link to="/listUsers">Liste</Link>}
-      {isAdmin && <Link to="/addUser">Nouvelle Utilisateur</Link>}
+      <Logo>
+        <Link style={{ color: "inherit", textDecoration: "inherit" }} to="/">
+          Intranet
+        </Link>
+      </Logo>
+      {isLogin && (
+        <Link
+          style={{ color: "inherit", textDecoration: "inherit" }}
+          to="/listUsers"
+        >
+          Liste
+        </Link>
+      )}
+      {isAdmin && (
+        <Link
+          style={{ color: "inherit", textDecoration: "inherit" }}
+          to="/addUser"
+        >
+          Nouvel Utilisateur
+        </Link>
+      )}
+      {isLogin && (
+        <Link to="/profile">
+          <img
+            className="menu-image"
+            src={JSON.parse(localStorage.getItem("user")).photo}
+            alt="user"
+          />
+        </Link>
+      )}
       {isLogin && (
         <LoginButton>
-          <FontAwesomeIcon icon={faRightToBracket} />
-          {isLogin && <Link to="/logout">Déconnexion</Link>}
+          <FontAwesomeIcon style={{ color: "black" }} icon={faRightToBracket} />
+          {isLogin && (
+            <Link
+              style={{ color: "black", textDecoration: "inherit" }}
+              to="/logout"
+            >
+              Déconnexion
+            </Link>
+          )}
         </LoginButton>
       )}
     </Nav>

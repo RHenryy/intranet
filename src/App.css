@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,14 +43,17 @@
 .read-the-docs {
   color: #888;
 }
+
 .bg-solid-blue {
   background-color: cyan;
   color: black;
 }
+
 .bg-solid-pink {
   background-color: pink;
   color: black;
 }
+
 .bg-solid-green {
   background-color: lightgreen;
   color: black;
@@ -59,17 +65,18 @@
   padding:1rem;
 } */
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
 
 
 .bold {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 .smaller {
   font-size: 0.9rem;
   margin: 0.5rem;
@@ -81,14 +88,14 @@
 } */
 .category {
   max-width: 50%;
-  margin-top: 0; 
+  margin-top: 0;
   margin-left: 50%;
   margin-bottom: 0;
 
 }
 
 .card-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
   margin: auto;
@@ -96,34 +103,40 @@
   margin-bottom: 1rem;
 
 }
+
 .card-container-random {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 1rem;
 }
 
 .custom-card {
-  display:flex;
-  
+  display: flex;
+
 }
+
 .card-image {
-  width:30%;
+  width: 30%;
   margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
+
 .card-text {
-  width:70%;
+  width: 70%;
   font-size: 16px;
 }
+
 .card-text p {
   font-size: 14px;
 }
+
 img {
   width: 100%;
 }
+
 .name {
   margin-top: 0.3rem;
 }
@@ -132,13 +145,77 @@ img {
   margin-bottom: 1rem;
 
 }
+
 .filterForm input {
   padding: 0.3rem;
   margin: 0.5rem;
   width: 40%;
 }
+
 .filterForm select {
   padding: 0.3rem;
   margin: 0.5rem;
   width: 15%;
+}
+
+.button-change {
+  padding: 0.3rem;
+  margin: 0.5rem;
+}
+
+.button-change:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.menu-image {
+  width: 45%;
+  border-radius: 30px;
+
+}
+
+.card-container-profile {
+  width: 100%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-intro {
+  margin-bottom: 2rem;
+}
+
+.input-email,
+.input-password {
+  margin: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.input-email label,
+.input-password label {
+  width: 100px;
+}
+
+.input-email input,
+.input-password input {
+  flex-grow: 1;
+}
+
+.input-submit {
+  margin-top: 2rem;
+  width: 150px;
+  height: 25px;
+  background-color: #f04b4b;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.input-submit:hover {
+  border: 1px solid white;
+  transform: scale(1.05);
 }

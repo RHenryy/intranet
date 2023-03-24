@@ -10,7 +10,9 @@ export const fetchUsersApi = createSlice({
   initialState: { data: [], filteredData: [], age: [], birthday: [] },
   reducers: {
     deleteUsers: (state, action) => {
-      state.data = state.data.filter((user) => user.id !== action.payload);
+      state.filteredData = state.filteredData.filter(
+        (user) => user.id !== action.payload
+      );
     },
     filterName: (state, { payload }) => {
       if (payload.filter === "name") {
@@ -79,5 +81,5 @@ export const fetchUsersApi = createSlice({
     builder.addCase(fetchUsers.rejected, (state, action) => {});
   },
 });
-export const { filterName, filterCategory, filterCategoryOnly } =
+export const { filterName, filterCategory, filterCategoryOnly, deleteUsers } =
   fetchUsersApi.actions;
