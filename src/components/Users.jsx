@@ -9,6 +9,8 @@ import {
 import { AdminContext } from "../context/AdminContext";
 import { deleteUsers } from "../js/userSlice";
 import { useDispatch } from "react-redux";
+import { editUser } from "../js/userSlice";
+import { Link } from "react-router-dom";
 
 function Users(props) {
   const { isAdmin } = useContext(AdminContext);
@@ -58,7 +60,20 @@ function Users(props) {
               >
                 Delete User
               </button>
-              <button className="button-change">Edit User</button>
+              <button
+                className="button-change"
+                onClick={() => dispatch(editUser(props))}
+              >
+                {/* <Link
+                  style={{ textDecoration: "inherit", color: "inherit" }}
+                  to={{
+                    pathname: "/editUser",
+                    state: props,
+                  }}
+                > */}
+                Edit User
+                {/* </Link> */}
+              </button>
             </div>
           )}
         </div>

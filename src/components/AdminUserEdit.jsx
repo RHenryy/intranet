@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../js/userSlice";
 
-const UserEdit = (props) => {
+const AdminUserEdit = (props) => {
   const dispatch = useDispatch();
-  const [userData, setUserProfile] = useState({
-    id: props.id,
-    age: props.age,
-    birthdate: props.birthdate,
-    gender: props.civilite,
-    category: props.category,
-    lastname: props.nom,
-    firstname: props.prenom,
-    email: props.email,
-    password: props.password,
-    phone: props.phone,
-    birthday: props.birthday,
-    city: props.ville,
-    country: props.pays,
-    photo: props.photoUrl,
-  });
-  useEffect(() => {
-    setUserProfile({
-      id: props.id,
-      age: props.age,
-      birthdate: props.birthdate,
-      gender: props.civilite,
-      category: props.category,
-      lastname: props.nom,
-      firstname: props.prenom,
-      email: props.email,
-      password: props.password,
-      phone: props.phone,
-      birthday: props.birthday,
-      city: props.ville,
-      country: props.pays,
-      photo: props.photoUrl,
-    });
-  }, [props]);
+  const { editingUser } = useSelector((state) => state.allUsers);
+  //   const [userData, setUserProfile] = useState({
+  //     id: props.id,
+  //     age: props.age,
+  //     birthdate: props.birthdate,
+  //     gender: props.civilite,
+  //     category: props.category,
+  //     lastname: props.nom,
+  //     firstname: props.prenom,
+  //     email: props.email,
+  //     password: props.password,
+  //     phone: props.phone,
+  //     birthday: props.birthday,
+  //     city: props.ville,
+  //     country: props.pays,
+  //     photo: props.photoUrl,
+  //   });
+  //   useEffect(() => {
+  //     setUserProfile({
+  //       id: props.id,
+  //       age: props.age,
+  //       birthdate: props.birthdate,
+  //       gender: props.civilite,
+  //       category: props.category,
+  //       lastname: props.nom,
+  //       firstname: props.prenom,
+  //       email: props.email,
+  //       password: props.password,
+  //       phone: props.phone,
+  //       birthday: props.birthday,
+  //       city: props.ville,
+  //       country: props.pays,
+  //       photo: props.photoUrl,
+  //     });
+  //   }, [props]);
   const genderOptions = ["Homme", "Femme"];
   const categoryOptions = ["Marketing", "Technique", "Client"];
 
@@ -70,7 +71,7 @@ const UserEdit = (props) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Title>Modifier mon profile</Title>
+      <Title>Modifier l'utilisateur</Title>
       <FormGroup>
         <Label>Civilité :</Label>
         <Select
@@ -79,7 +80,7 @@ const UserEdit = (props) => {
           onChange={(event) =>
             setUserProfile((prevState) => ({
               ...prevState,
-              gender: event.target.value,
+              civilite: event.target.value,
             }))
           }
         >
@@ -237,6 +238,21 @@ const UserEdit = (props) => {
             }))
           }
         />
+        <Select
+          defaultValue={props.isAdmin}
+          onChange={(event) =>
+            setUserProfile((prevState) => ({
+              ...prevState,
+              isAdmin: event.target.value,
+            }))
+          }
+        >
+          {categoryOptions.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </Select>
       </FormGroup>
       {/* {Object.keys(errors).length > 0 && (
         <ErrorMessage>
@@ -249,7 +265,7 @@ const UserEdit = (props) => {
     </form>
   );
 };
-export default UserEdit;
+export default AdminUserEdit;
 
 const Title = styled.h2`
   font-size: 50px;

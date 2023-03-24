@@ -1,4 +1,5 @@
 import "../App.css";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCakeCandles,
@@ -6,67 +7,80 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import UserEdit from "./UserEdit";
+import { useSelector } from "react-redux";
+import { userData } from "../js/userSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-function UserProfile() {
-  const userProfile = JSON.parse(localStorage.getItem("user"));
-  if (userProfile.gender === "female") {
-    userProfile.gender = "Femme";
-  } else {
-    userProfile.gender = "Homme";
-  }
+function userProfile() {
+  const { user } = useSelector((state) => state.allUsers);
+  let currentuser = localStorage.getItem("current-user");
+  let localData = JSON.parse(localStorage.getItem("user-" + currentuser));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localData) {
+      dispatch(userData(localData));
+    }
+  }, []);
   return (
     <div className="card-container-profile">
-      {/* <div className="category">
-        {userProfile.category === "Marketing" && (
-          <p className="bg-solid-pink category">{userProfile.category}</p>
+      <div className="category">
+        {user.category === "Marketing" && (
+          <p className="bg-solid-pink category">{user.category}</p>
         )}
-        {userProfile.category === "Client" && (
-          <p className="bg-solid-green category">{userProfile.category}</p>
+        {user.category === "Client" && (
+          <p className="bg-solid-green category">{user.category}</p>
         )}
-        {userProfile.category === "Technique" && (
-          <p className="bg-solid-blue category">{userProfile.category}</p>
+        {user.category === "Technique" && (
+          <p className="bg-solid-blue category">{user.category}</p>
         )}
-      </div> */}
+      </div>
       <div className="custom-card">
         <div className="card-image">
-          <img src={userProfile.photo} alt={userProfile.lastname} />
+          <img src={user.photo} alt={user.lastname} />
         </div>
         <div className="card-text">
           <p className="name">
             <span className="bold">
-              {userProfile.firstname} {userProfile.lastname}
+              {user.firstname} {user.lastname}
             </span>{" "}
-            ({userProfile.age} ans)
+            ({user.age} ans)
           </p>
           <p className="smaller">
-            {userProfile.city}, {userProfile.country}
+            {user.city}, {user.country}
           </p>
           <p className="smaller">
-            <FontAwesomeIcon icon={faEnvelope} /> {userProfile.email}
+            <FontAwesomeIcon icon={faEnvelope} /> {user.email}
           </p>
           <p className="smaller">
-            <FontAwesomeIcon icon={faPhone} /> {userProfile.phone}
+            <FontAwesomeIcon icon={faPhone} /> {user.phone}
           </p>
           <p className="smaller">
             <FontAwesomeIcon icon={faCakeCandles} /> Anniversaire :{" "}
-            {userProfile.birthday}
+            {user.birthday}
           </p>
         </div>
       </div>
       <UserEdit
-        civilite={userProfile.gender}
-        category={userProfile.category}
-        nom={userProfile.lastname}
-        prenom={userProfile.firstname}
-        email={userProfile.email}
-        phone={userProfile.phone}
-        dateOfBirth={userProfile.birthdate}
-        ville={userProfile.city}
-        pays={userProfile.country}
-        photoUrl={userProfile.photo}
+        id={user.id}
+        age={user.age}
+        birthday={user.birthday}
+        civilite={user.gender}
+        category={user.category}
+        nom={user.lastname}
+        prenom={user.firstname}
+        password={user.password}
+        email={user.email}
+        phone={user.phone}
+        birthdate={user.birthdate}
+        ville={user.city}
+        pays={user.country}
+        photoUrl={user.photo}
       />
     </div>
   );
 }
 
-export default UserProfile;
+export default userProfile;
