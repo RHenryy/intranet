@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import bcryptjs from "bcryptjs";
-import { fetchUsers } from "../js/userSlice";
+import { fetchUsers, userData } from "../js/userSlice";
 import { LoginContext } from "../context/LoginContext";
 import { AdminContext } from "../context/AdminContext";
 
@@ -46,8 +46,20 @@ export default function LoginPage() {
       checkEmail[0].password
     );
     if (checkEmail.length > 0 && checkPassword) {
+      if (localStorage.getItem("user-" + checkEmail[0].id)) {
+        dispatch(
+          userData(JSON.parse(localStorage.getItem("user-" + checkEmail[0].id)))
+        );
+      } else {
+        dispatch(userData(checkEmail[0]));
+        localStorage.setItem(
+          "user-" + checkEmail[0].id,
+          JSON.stringify(checkEmail[0])
+        );
+      }
+      localStorage.setItem("current-user", checkEmail[0].id);
       localStorage.setItem("login", true);
-      localStorage.setItem("user", JSON.stringify(checkEmail[0]));
+
       setIsLogin(true);
       if (checkEmail[0].isAdmin) {
         localStorage.setItem("admin", true);

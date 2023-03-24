@@ -9,8 +9,12 @@ import { LoginContext } from "../context/LoginContext";
 function Menu() {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const { isLogin } = useContext(LoginContext);
-
   const navigate = useNavigate();
+  let currentUser = JSON.parse(localStorage.getItem("current-user"));
+  let photo;
+  if (localStorage.getItem("user-" + currentUser)) {
+    photo = JSON.parse(localStorage.getItem("user-" + currentUser)).photo;
+  }
 
   return (
     <div className="nav">
