@@ -58,7 +58,12 @@ function Users(props) {
               >
                 Delete User
               </button>
-              <button className="button-change">Edit User</button>
+              <button
+                // onClick={}
+                className="button-change"
+              >
+                Edit User
+              </button>
             </div>
           )}
         </div>
