@@ -10,37 +10,9 @@ function App() {
   const { isLogin } = useContext(LoginContext);
 
   return (
-    <div className="App">
+    <div>
       {!isLogin && <LoginPage />}
       {isLogin && <HomePage />}
-
-      {/* {isLogin && data.length > 0 && (
-        <div>
-          <h2>Liste des utilisateurs</h2>
-
-          {data.map((item, index) => {
-            return (
-              <>
-                <Users
-                  key={item.index}
-                  id={item.id}
-                  lastname={item.lastname}
-                  firstname={item.firstname}
-                  photo={item.photo}
-                  birthdate={item.age}
-                  email={item.email}
-                  city={item.city}
-                  country={item.country}
-                  phone={item.phone}
-                  category={item.category}
-                  birthday={item.birthday}
-                />
-              </>
-            );
-          })}
-      <CreateNewUserForm />
-        </div> 
-        )}*/}
     </div>
   );
 }

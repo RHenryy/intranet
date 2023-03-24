@@ -15,23 +15,12 @@ function UserProfile() {
     userProfile.gender = "Homme";
   }
   return (
-    <div className="card-container-profile">
-      {/* <div className="category">
-        {userProfile.category === "Marketing" && (
-          <p className="bg-solid-pink category">{userProfile.category}</p>
-        )}
-        {userProfile.category === "Client" && (
-          <p className="bg-solid-green category">{userProfile.category}</p>
-        )}
-        {userProfile.category === "Technique" && (
-          <p className="bg-solid-blue category">{userProfile.category}</p>
-        )}
-      </div> */}
-      <div className="custom-card">
-        <div className="card-image">
+    <div>
+      <div className="card-self-infos">
+        <div className="self-image">
           <img src={userProfile.photo} alt={userProfile.lastname} />
         </div>
-        <div className="card-text">
+        <div className="self-infos">
           <p className="name">
             <span className="bold">
               {userProfile.firstname} {userProfile.lastname}

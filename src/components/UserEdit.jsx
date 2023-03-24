@@ -43,156 +43,150 @@ const UserEdit = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Title>Modifier mon profile</Title>
-      <FormGroup>
-        <Label>Civilité :</Label>
-        <Select
-          defaultValue={props.civilite}
-          placeholder="Homme"
-          onChange={(event) => setCivilite(event.target.value)}
-        >
-          {genderOptions.map((civilite) => (
-            <option key={civilite} value={civilite}>
-              {civilite}
-            </option>
-          ))}
-        </Select>
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Catégorie :</Label>
-        <Select
-          defaultValue={props.category}
-          onChange={(event) => setCategory(event.target.value)}
-        >
-          {categoryOptions.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </Select>
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Nom :</Label>
-        <Input
-          type="text"
-          defaultValue={props.nom}
-          placeholder="Wick"
-          onChange={(event) => setNom(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Prénom :</Label>
-        <Input
-          type="text"
-          defaultValue={props.prenom}
-          placeholder="John"
-          onChange={(event) => setPrenom(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Email :</Label>
-        <Input
-          type="text"
-          defaultValue={props.email}
-          placeholder="John.wick@outlook.com"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Mot de passe :</Label>
-        <Input
-          type="text"
-          defaultValue={password}
-          placeholder="(min. 8 caractères)"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Téléphone :</Label>
-        <Input
-          type="text"
-          defaultValue={props.phone}
-          placeholder="07 89 01 23 45"
-          onChange={(event) => setPhone(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Date d'anniversaire :</Label>
-        <Input
-          type="date"
-          defaultValue={props.dateOfBirth}
-          onChange={(event) => setDateOfBirth(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Ville :</Label>
-        <Input
-          type="text"
-          defaultValue={props.ville}
-          placeholder="Los angeles"
-          onChange={(event) => setVille(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Pays :</Label>
-        <Input
-          type="text"
-          defaultValue={props.pays}
-          placeholder="Etats-Unis"
-          onChange={(event) => setPays(event.target.value)}
-        />
-      </FormGroup>
-      <br />
-      <FormGroup>
-        <Label>Photo URL :</Label>
-        <Input
-          type="text"
-          defaultValue={props.photoUrl}
-          placeholder="Https://"
-          onChange={(event) => setPhotoUrl(event.target.value)}
-        />
-      </FormGroup>
-      {Object.keys(errors).length > 0 && (
-        <ErrorMessage>
-          {Object.values(errors).map((error) => (
-            <p>{error}</p>
-          ))}
-        </ErrorMessage>
-      )}
-      <Button type="submit">Modifier</Button>
-    </form>
+    <>
+      <h1 className="userEdit-title">Modifier mon profile</h1>
+      <form className="formEditSelf" onSubmit={handleSubmit}>
+        <div className="formGroup">
+          <label className="form-label">Civilité :</label>
+          <Select
+            defaultValue={props.civilite}
+            placeholder="Homme"
+            onChange={(event) => setCivilite(event.target.value)}
+          >
+            {genderOptions.map((civilite) => (
+              <option key={civilite} value={civilite}>
+                {civilite}
+              </option>
+            ))}
+          </Select>
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Catégorie :</label>
+          <Select
+            defaultValue={props.category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            {categoryOptions.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </Select>
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Nom :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.nom}
+            placeholder="Wick"
+            onChange={(event) => setNom(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Prénom :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.prenom}
+            placeholder="John"
+            onChange={(event) => setPrenom(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Email :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.email}
+            placeholder="John.wick@outlook.com"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Mot de passe :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={password}
+            placeholder="(min. 8 caractères)"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Téléphone :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.phone}
+            placeholder="07 89 01 23 45"
+            onChange={(event) => setPhone(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Date de Naissance :</label>
+          <input
+            className="form-input"
+            type="date"
+            defaultValue={props.dateOfBirth}
+            onChange={(event) => setDateOfBirth(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Ville :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.ville}
+            placeholder="Los angeles"
+            onChange={(event) => setVille(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Pays :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.pays}
+            placeholder="Etats-Unis"
+            onChange={(event) => setPays(event.target.value)}
+          />
+        </div>
+        <br />
+        <div className="formGroup">
+          <label className="form-label">Photo URL :</label>
+          <input
+            className="form-input"
+            type="text"
+            defaultValue={props.photoUrl}
+            placeholder="Https://"
+            onChange={(event) => setPhotoUrl(event.target.value)}
+          />
+        </div>
+        {Object.keys(errors).length > 0 && (
+          <ErrorMessage>
+            {Object.values(errors).map((error) => (
+              <p>{error}</p>
+            ))}
+          </ErrorMessage>
+        )}
+        <Button type="submit">Modifier</Button>
+      </form>
+    </>
   );
 };
 export default UserEdit;
 
-const Title = styled.h2`
-  font-size: 50px;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Label = styled.label`
-  margin-right: 10px;
-  font-weight: bold;
-  text-align: right;
-  flex: 1;
-`;
-
-const Input = styled.input`
+const input = styled.input`
   padding: 8px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -209,6 +203,7 @@ const Select = styled.select`
 `;
 
 const Button = styled.button`
+  width: 200px;
   padding: 10px 15px;
   margin: 8px;
   border-radius: 3px;

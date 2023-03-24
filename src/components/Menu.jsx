@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { AdminContext } from "../context/AdminContext";
@@ -10,13 +10,15 @@ function Menu() {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const { isLogin } = useContext(LoginContext);
 
+  const navigate = useNavigate();
+
   return (
-    <Nav>
-      <Logo>
+    <div className="nav">
+      <div className="logo">
         <Link style={{ color: "inherit", textDecoration: "inherit" }} to="/">
           Intranet
         </Link>
-      </Logo>
+      </div>
       {isLogin && (
         <Link
           style={{ color: "inherit", textDecoration: "inherit" }}
@@ -34,46 +36,32 @@ function Menu() {
         </Link>
       )}
       {isLogin && (
-        <Link to="/profile">
-          <img
-            className="menu-image"
-            src={JSON.parse(localStorage.getItem("user")).photo}
-            alt="user"
-          />
-        </Link>
+        <img
+          onClick={() => navigate("/profile")}
+          className="menu-image"
+          src={JSON.parse(localStorage.getItem("user")).photo}
+          alt="user"
+        />
       )}
       {isLogin && (
-        <LoginButton>
+        <div className="loginButton">
           <FontAwesomeIcon style={{ color: "black" }} icon={faRightToBracket} />
           {isLogin && (
             <Link
               style={{ color: "black", textDecoration: "inherit" }}
               to="/logout"
             >
+              {" "}
               Déconnexion
             </Link>
           )}
-        </LoginButton>
+        </div>
       )}
-    </Nav>
+    </div>
   );
 }
 
 export default Menu;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f04b4b;
-  height: 50px;
-  padding: 0 20px;
-`;
-
-const Logo = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-`;
 
 const LoginButton = styled.button`
   background: none;
