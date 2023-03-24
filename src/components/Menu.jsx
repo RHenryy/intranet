@@ -43,7 +43,7 @@ function Menu() {
         <img
           onClick={() => navigate("/profile")}
           className="menu-image"
-          src={JSON.parse(localStorage.getItem("user")).photo}
+          src={photo}
           alt="user"
         />
       )}

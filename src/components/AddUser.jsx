@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../js/userSlice";
 
 const AddUser = () => {
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [inputValue, setInputValue] = useState({
     civility: "",
@@ -220,7 +223,11 @@ const AddUser = () => {
           ))}
         </div>
       )}
-      <button className="buttonSubmit" type="submit">
+      <button
+        onClick={() => dispatch(addUser(inputValue))}
+        className="buttonSubmit"
+        type="submit"
+      >
         Ajouter
       </button>
     </form>

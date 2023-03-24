@@ -18,6 +18,12 @@ export const fetchUsersApi = createSlice({
     editingUser: [],
   },
   reducers: {
+    addUser: (state, action) => {
+      state.data.push(action.payload);
+      state.filteredData.push(action.payload);
+      console.log(action.payload);
+    },
+
     editUser: (state, action) => {
       state.editingUser = action.payload;
       console.log(action.payload);
@@ -53,9 +59,7 @@ export const fetchUsersApi = createSlice({
       }
       if (payload.filter === "city") {
         state.filteredData = state.data.filter((user) =>
-          user.city
-            .toLowerCase()
-            .includes(payload.input.toLowerCase().replace(/\s+/g, ""))
+          user.city.toLowerCase().includes(payload.input.toLowerCase())
         );
       }
     },
@@ -114,4 +118,5 @@ export const {
   updateUser,
   userData,
   editUser,
+  addUser,
 } = fetchUsersApi.actions;
