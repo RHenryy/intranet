@@ -3,7 +3,7 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import Menu from "./components/Menu";
 import HomePage from "./components/HomePage";
-import CreateNewUserForm from "./components/CreateNewUserForm";
+import AddUser from "./components/AddUser";
 import { LoginContext } from "./context/LoginContext";
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
               </>
             );
           })}
-      <CreateNewUserForm />
+      <AddUser />
         </div> 
         )}*/}
     </div>

@@ -65,5 +65,57 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
+}
 
+/* AddUser */
+
+.addUserTitle {
+  font-size: 50px;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.labelAddUser {
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: right;
+  flex: 1;
+}
+
+.inputAddUser {
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: auto;
+  flex: 2;
+}
+
+.selectAddUser {
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: auto;
+  flex: 2;
+}
+
+.buttonSubmit {
+  padding: 10px 15px;
+  margin: 8px;
+  border-radius: 3px;
+  border: none;
+  background-color: #f04b4b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonSubmit:hover {
+  background-color: #f95e5e;
+}
+
+.errorMessage {
+  color: red;
 }

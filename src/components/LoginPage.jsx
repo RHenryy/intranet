@@ -79,30 +79,34 @@ export default function LoginPage() {
 
   return (
     <div>
-      <h1>Connexion</h1>
+      <h1 className="login-title">Connexion</h1>
       <hr />
-      <p>
+      <p className="login-intro">
         Pour vous connecter à l'intranet, entrez votre identifiant et mot de
         passe.
       </p>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          value={infosConnexion.email}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          value={infosConnexion.password}
-        />
-        <input type="submit" value="connexion" />
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="input-email">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={infosConnexion.email}
+          />
+        </div>
+        <div className="input-password">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            value={infosConnexion.password}
+          />
+        </div>
+        <input className="input-submit" type="submit" value="connexion" />
       </form>
     </div>
   );
