@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
+import "../index.css";
 import AddUser from "../components/AddUser";
 import Logout from "../components/Logout";
 import Menu from "../components/Menu";

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../js/userSlice";
 
@@ -70,10 +69,11 @@ const UserEdit = (props) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Title>Modifier mon profile</Title>
-      <FormGroup>
-        <Label>Civilité :</Label>
-        <Select
+      <h1>Modifier mon profile</h1>
+      <div className="formGroup">
+        <label className="form-label">Civilité :</label>
+        <select
+          className="form-select"
           defaultValue={props.civilite}
           placeholder="Homme"
           onChange={(event) =>
@@ -88,12 +88,13 @@ const UserEdit = (props) => {
               {civilite}
             </option>
           ))}
-        </Select>
-      </FormGroup>
+        </select>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Catégorie :</Label>
-        <Select
+      <div className="formGroup">
+        <label className="form-label">Catégorie :</label>
+        <select
+          className="form-select"
           defaultValue={props.category}
           onChange={(event) =>
             setUserProfile((prevState) => ({
@@ -107,12 +108,13 @@ const UserEdit = (props) => {
               {category}
             </option>
           ))}
-        </Select>
-      </FormGroup>
+        </select>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Nom :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Nom :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.nom}
           placeholder="Wick"
@@ -123,11 +125,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Prénom :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Prénom :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.prenom}
           placeholder="John"
@@ -138,11 +141,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Email :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Email :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.email}
           placeholder="John.wick@outlook.com"
@@ -153,11 +157,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Mot de passe :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Mot de passe :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.password}
           placeholder="(min. 8 caractères)"
@@ -168,11 +173,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Téléphone :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Téléphone :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.phone}
           placeholder="07 89 01 23 45"
@@ -183,20 +189,22 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Date d'anniversaire :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Date de Naissance :</label>
+        <input
+          className="form-input"
           type="date"
           defaultValue={props.birthdate}
           onChange={handleDate}
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Ville :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Ville :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.ville}
           placeholder="Los angeles"
@@ -207,11 +215,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Pays :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Pays :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.pays}
           placeholder="Etats-Unis"
@@ -222,11 +231,12 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       <br />
-      <FormGroup>
-        <Label>Photo URL :</Label>
-        <Input
+      <div className="formGroup">
+        <label className="form-label">Photo URL :</label>
+        <input
+          className="form-input"
           type="text"
           defaultValue={props.photoUrl}
           placeholder="Https://"
@@ -237,51 +247,53 @@ const UserEdit = (props) => {
             }))
           }
         />
-      </FormGroup>
+      </div>
       {/* {Object.keys(errors).length > 0 && (
-        <ErrorMessage>
+        <div className="errorMessage">
           {Object.values(errors).map((error) => (
             <p>{error}</p>
           ))}
-        </ErrorMessage>
+        </div>
       )} */}
-      <Button type="submit">Modifier</Button>
+      <button className="buttonSubmit" type="submit">
+        Modifier
+      </button>
     </form>
   );
 };
 export default UserEdit;
 
-const input = styled.input`
-  padding: 8px 10px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  width: auto;
-  flex: 2;
-`;
+// const input = styled.input`
+//   padding: 8px 10px;
+//   border-radius: 3px;
+//   border: 1px solid #ccc;
+//   width: auto;
+//   flex: 2;
+// `;
 
-const Select = styled.select`
-  padding: 8px 10px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  width: auto;
-  flex: 2;
-`;
+// const Select = styled.select`
+//   padding: 8px 10px;
+//   border-radius: 3px;
+//   border: 1px solid #ccc;
+//   width: auto;
+//   flex: 2;
+// `;
 
-const Button = styled.button`
-  width: 200px;
-  padding: 10px 15px;
-  margin: 8px;
-  border-radius: 3px;
-  border: none;
-  background-color: #f04b4b;
-  color: #fff;
-  cursor: pointer;
+// const Button = styled.button`
+//   width: 200px;
+//   padding: 10px 15px;
+//   margin: 8px;
+//   border-radius: 3px;
+//   border: none;
+//   background-color: #f04b4b;
+//   color: #fff;
+//   cursor: pointer;
 
-  &:hover {
-    background-color: #f95e5e;
-  }
-`;
+//   &:hover {
+//     background-color: #f95e5e;
+//   }
+// `;
 
-const ErrorMessage = styled.div`
-  color: red;
-`;
+// const ErrorMessage = styled.div`
+//   color: red;
+// `;

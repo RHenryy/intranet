@@ -100,8 +100,8 @@
 }
 
 .category {
-  max-width: 50%;
-  margin-top: 0;
+  max-width: 70%;
+  margin-top: .5rem;
   margin-left: 50%;
   margin-bottom: 0;
 
@@ -248,22 +248,31 @@ img {
 }
 
 .formGroup {
-  width: 70%;
+  width: 100%;
   margin-bottom: 1rem;
   padding-right: 15%;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .form-label {
-  width: 25%;
+  /* width: 200px;
+  margin-right: 10px;
+  font-weight: bold; */
   margin-right: 10px;
   font-weight: bold;
-  text-align: right;
+  text-align: left;
+  flex: 1;
 }
 
 .form-input {
+  /* padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: auto;
+  flex: 2; */
   padding: 8px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -272,9 +281,15 @@ img {
 }
 
 .card-self-infos {
-  margin-top: 1.5rem;
+  margin-top: .25rem;
   display: flex;
   justify-content: space-between;
 }
 
-.self-infos {}
+.form-select {
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: auto;
+  flex: 2;
+}
