@@ -251,24 +251,7 @@ const UserEdit = (props) => {
 };
 export default UserEdit;
 
-const Title = styled.h2`
-  font-size: 50px;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Label = styled.label`
-  margin-right: 10px;
-  font-weight: bold;
-  text-align: right;
-  flex: 1;
-`;
-
-const Input = styled.input`
+const input = styled.input`
   padding: 8px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -285,6 +268,7 @@ const Select = styled.select`
 `;
 
 const Button = styled.button`
+  width: 200px;
   padding: 10px 15px;
   margin: 8px;
   border-radius: 3px;

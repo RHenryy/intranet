@@ -25,7 +25,7 @@ function userProfile() {
     }
   }, []);
   return (
-    <div className="card-container-profile">
+    <div>
       <div className="category">
         {user.category === "Marketing" && (
           <p className="bg-solid-pink category">{user.category}</p>
@@ -37,11 +37,11 @@ function userProfile() {
           <p className="bg-solid-blue category">{user.category}</p>
         )}
       </div>
-      <div className="custom-card">
-        <div className="card-image">
+      <div className="card-self-infos">
+        <div className="self-image">
           <img src={user.photo} alt={user.lastname} />
         </div>
-        <div className="card-text">
+        <div className="self-infos">
           <p className="name">
             <span className="bold">
               {user.firstname} {user.lastname}
