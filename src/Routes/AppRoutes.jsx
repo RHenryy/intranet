@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
-import CreateNewUserForm from "../components/CreateNewUserForm";
+import AddUser from "../components/AddUser";
 import Logout from "../components/Logout";
 import Menu from "../components/Menu";
 import UsersList from "../components/UsersList";
@@ -24,7 +24,7 @@ export function AppRoutes() {
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="listUsers" element={<UsersList />} />
-          <Route path="addUser" element={<CreateNewUserForm />} />
+          <Route path="addUser" element={<AddUser />} />
           <Route path="logout" element={<Logout />} />
         </Routes>
       </AdminContext.Provider>
