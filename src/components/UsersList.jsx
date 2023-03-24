@@ -10,6 +10,7 @@ export default function UsersList() {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const dispatch = useDispatch();
   const { data, filteredData } = useSelector((state) => state.allUsers);
+  const allusers = JSON.parse(localStorage.getItem("users"));
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -36,6 +37,7 @@ export default function UsersList() {
                   phone={item.phone}
                   category={item.category}
                   birthday={item.birthday}
+                  isAdmin={item.isAdmin}
                 />
               </React.Fragment>
             );

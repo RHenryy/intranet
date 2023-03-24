@@ -8,12 +8,11 @@ import { LoginContext } from "./context/LoginContext";
 
 function App() {
   const { isLogin } = useContext(LoginContext);
-
+  // localStorage.clear();
   return (
     <div className="App">
       {!isLogin && <LoginPage />}
       {isLogin && <HomePage />}
-
       {/* {isLogin && data.length > 0 && (
         <div>
           <h2>Liste des utilisateurs</h2>

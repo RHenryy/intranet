@@ -9,7 +9,11 @@ import { LoginContext } from "../context/LoginContext";
 function Menu() {
   const { isAdmin, setIsAdmin } = useContext(AdminContext);
   const { isLogin } = useContext(LoginContext);
-
+  let currentUser = JSON.parse(localStorage.getItem("current-user"));
+  let photo;
+  if (localStorage.getItem("user-" + currentUser)) {
+    photo = JSON.parse(localStorage.getItem("user-" + currentUser)).photo;
+  }
   return (
     <Nav>
       <Logo>
@@ -35,11 +39,7 @@ function Menu() {
       )}
       {isLogin && (
         <Link to="/profile">
-          <img
-            className="menu-image"
-            src={JSON.parse(localStorage.getItem("user")).photo}
-            alt="user"
-          />
+          <img className="menu-image" src={photo} alt="user" />
         </Link>
       )}
       {isLogin && (

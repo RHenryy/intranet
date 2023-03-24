@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   const response = await fetch("http://localhost:5173/src/data/users.json");
@@ -7,8 +8,32 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
 
 export const fetchUsersApi = createSlice({
   name: "fetchUsersApi",
-  initialState: { data: [], filteredData: [], age: [], birthday: [] },
+  initialState: {
+    data: [],
+    filteredData: [],
+    deletedUsers: [],
+    age: [],
+    birthday: [],
+    user: [],
+    editingUser: [],
+  },
   reducers: {
+    editUser: (state, action) => {
+      state.editingUser = action.payload;
+      console.log(action.payload);
+    },
+    userData: (state, action) => {
+      state.user = action.payload;
+    },
+    updateUser: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem(
+        "user-" + action.payload.id,
+        JSON.stringify(action.payload)
+      );
+      // state.filteredData[0] = action.payload;
+    },
+
     deleteUsers: (state, action) => {
       state.filteredData = state.filteredData.filter(
         (user) => user.id !== action.payload
@@ -81,5 +106,12 @@ export const fetchUsersApi = createSlice({
     builder.addCase(fetchUsers.rejected, (state, action) => {});
   },
 });
-export const { filterName, filterCategory, filterCategoryOnly, deleteUsers } =
-  fetchUsersApi.actions;
+export const {
+  filterName,
+  filterCategory,
+  filterCategoryOnly,
+  deleteUsers,
+  updateUser,
+  userData,
+  editUser,
+} = fetchUsersApi.actions;

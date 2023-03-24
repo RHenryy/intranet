@@ -9,7 +9,8 @@ export default function Logout() {
   const { setIsLogin } = useContext(LoginContext);
 
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem("login");
+    localStorage.removeItem("admin");
     setIsLogin(false);
     setIsAdmin(false);
     navigate("/");
