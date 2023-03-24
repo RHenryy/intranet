@@ -38,10 +38,9 @@ function App() {
               </>
             );
           })}
-      
+      <AddUser />
         </div> 
         )}*/}
-      <AddUser />
     </div>
   );
 }
